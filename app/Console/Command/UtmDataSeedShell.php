@@ -1,142 +1,83 @@
 <?php
-class UtmDataSeedShell extends AppShell {
+
+class UtmDataSeedShell extends AppShell
+{
 	public $uses = array('UtmData');
 
-	public function main() {
-		$this->out('Start adding fixture for UTM data...');
+	public function main()
+	{
+		$this->out('Start generate UTM data...');
 
-		// Clean data
+		// Clean old data
 		$this->UtmData->deleteAll('1=1');
 
-		$testData = array(
-			array(
-				'source' => 'google',
-				'medium' => 'cpc',
-				'campaign' => 'summer',
-				'content' => 'banner',
-				'term' => 'video'
-			),
-			array(
-				'source' => 'google',
-				'medium' => 'cpc',
-				'campaign' => 'winter',
-				'content' => 'delta',
-				'term' => null
-			),
-			array(
-				'source' => 'yandex',
-				'medium' => 'cpc',
-				'campaign' => 'spring',
-				'content' => 'text',
-				'term' => 'search'
-			),
-			array(
-				'source' => 'facebook',
-				'medium' => 'social',
-				'campaign' => 'autumn',
-				'content' => 'image',
-				'term' => 'park'
-			),
-			array(
-				'source' => 'twitter',
-				'medium' => 'social',
-				'campaign' => 'newyear',
-				'content' => 'video',
-				'term' => 'promo'
-			),
-
-			array(
-				'source' => 'google',
-				'medium' => 'organic',
-				'campaign' => 'blog_content',
-				'content' => 'article_1',
-				'term' => 'cakephp_tutorial'
-			),
-			array(
-				'source' => 'google',
-				'medium' => 'organic',
-				'campaign' => 'blog_content',
-				'content' => 'article_2',
-				'term' => 'php_frameworks'
-			),
-			array(
-				'source' => 'google',
-				'medium' => 'referral',
-				'campaign' => 'partner_sites',
-				'content' => 'techblog.com',
-				'term' => null
-			),
-
-			array(
-				'source' => 'yandex',
-				'medium' => 'organic',
-				'campaign' => 'seo_boost',
-				'content' => 'meta',
-				'term' => 'php_development'
-			),
-			array(
-				'source' => 'yandex',
-				'medium' => 'organic',
-				'campaign' => 'seo_boost',
-				'content' => 'tags',
-				'term' => 'framework_comparison'
-			),
-
-			array(
-				'source' => 'instagram',
-				'medium' => 'social',
-				'campaign' => 'q4_launch',
-				'content' => 'story_video',
-				'term' => null
-			),
-			array(
-				'source' => 'instagram',
-				'medium' => 'social',
-				'campaign' => 'q4_launch',
-				'content' => 'carousel_post',
-				'term' => null
-			),
-			array(
-				'source' => 'instagram',
-				'medium' => 'social',
-				'campaign' => 'influencer_collab',
-				'content' => 'fun',
-				'term' => null
-			),
-
-			array(
-				'source' => 'linkedin',
-				'medium' => 'social',
-				'campaign' => 'b2b_lead_gen',
-				'content' => 'whitepaper_download',
-				'term' => 'enterprise_cakephp'
-			),
-
-			array(
-				'source' => 'email',
-				'medium' => 'economics',
-				'campaign' => 'newsletter_october',
-				'content' => 'product_update',
-				'term' => null
-			),
-			array(
-				'source' => 'email',
-				'medium' => 'music',
-				'campaign' => 'newsletter_october',
-				'content' => 'user_stories',
-				'term' => null
-			)
+		$sources = array(
+			'google', 'yandex', 'bing', 'duckduckgo', 'baidu', 'yahoo',
+			'facebook', 'instagram', 'twitter', 'linkedin', 'tiktok', 'pinterest', 'snapchat',
+			'youtube', 'vimeo', 'twitch',
+			'reddit', 'discord', 'telegram',
+			'direct', 'email_marketing', 'qr_code_scanner',
+			'partner_techcrunch', 'partner_wired', 'referral_forbes',
+			'blog_smashingmagazine', 'blog_css_tricks', 'forum_stackoverflow',
+			'offline_conference_2023', 'offline_webinar', 'offline_flyer'
 		);
 
-		foreach ($testData as $data) {
-			$this->UtmData->create();
-			if ($this->UtmData->save($data)) {
-				$this->out('Record added: ' . $data['source'] . ' - ' . $data['medium'] . ' - ' . $data['campaign']);
-			} else {
-				$this->out('Error adding record');
+		$mediums = array('cpc', 'organic', 'social', 'email', 'referral', 'display', 'cpm');
+		$campaigns_base = array('brand_awareness', 'lead_generation', 'product_launch', 'seasonal_sale', 'content_promo', 'user_re_engagement');
+		$contents_base = array('video_ad', 'carousel_ad', 'story_post', 'banner_sidebar', 'blog_article', 'whitepaper', 'case_study', 'webinar_signup');
+		$terms_base = array('php_framework', 'cakephp_tutorial', 'web_dev', 'mvc_pattern', 'backend_as_a_service', 'api_integration');
+
+		$testData = array();
+		$totalRecords = 0;
+
+		foreach ($sources as $source) {
+			$numRecordsForSource = rand(2, 5);
+
+			for ($i = 0; $i < $numRecordsForSource; $i++) {
+				$medium = $mediums[array_rand($mediums)];
+				$campaign = $campaigns_base[array_rand($campaigns_base)] . '_' . date('Y');
+				$content = $contents_base[array_rand($contents_base)];
+				$term = $terms_base[array_rand($terms_base)];
+
+				if (rand(0, 1)) {
+					$term = null;
+				}
+
+				$testData[] = array(
+					'source' => $source,
+					'medium' => $medium,
+					'campaign' => $campaign,
+					'content' => $content,
+					'term' => $term,
+				);
 			}
 		}
 
-		$this->out('Finish success adding UTM data');
+		$successCount = 0;
+		$failCount = 0;
+		$totalToSave = count($testData);
+
+		$this->out("Going to add {$totalToSave} records...");
+
+		foreach ($testData as $i => $data) {
+			$this->UtmData->create();
+			if ($this->UtmData->save($data)) {
+				$successCount++;
+			} else {
+				$failCount++;
+				$this->err("Error: " . $data['source']);
+			}
+
+			if (($i + 1) % 20 == 0) {
+				$this->out("Working " . ($i + 1) . " / {$totalToSave} records...");
+			}
+		}
+
+		$this->out('');
+		$this->out('---------------------------------------------------------------');
+		$this->out("Added: {$successCount}");
+		$this->out("Errors: {$failCount}");
+		$this->out("Uniq: " . count($sources));
+		$this->out('---------------------------------------------------------------');
 	}
 }

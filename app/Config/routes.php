@@ -31,7 +31,7 @@
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
-	Router::connect('/statistics/utm/list', array(
+	Router::connect('/statistics/utm/list/*', array(
 		'controller' => 'statistics',
 		'action' => 'utm_list'
 	));
