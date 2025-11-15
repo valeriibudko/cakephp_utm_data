@@ -2,9 +2,7 @@
 
 ![img.png](app/webroot/img/demo_1.png)
 
-# First run app
-
-In terminal
+Add fixture to DB:
 `app/Console/cake utm_data_seed`
 
 
