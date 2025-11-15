@@ -1,3 +1,13 @@
+# UTM data result
+
+![img.png](app/webroot/img/demo_1.png)
+
+# First run app
+
+In terminal
+`app/Console/cake utm_data_seed`
+
+
 # CakePHP
 
 [![Latest Stable Version](https://poser.pugx.org/cakephp/cakephp/v/stable.svg)](https://packagist.org/packages/cakephp/cakephp)
