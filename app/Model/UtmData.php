@@ -39,6 +39,7 @@ class UtmData extends AppModel
 
 		$sources = $this->find('list', $options);
 		$result = array();
+//		debug($this->getDataSource()->getLog()); //dev
 
 		foreach ($sources as $sourceId => $source) {
 			$result[$source] = array();
@@ -46,9 +47,7 @@ class UtmData extends AppModel
 			// Get Medium for each source
 			$mediums = $this->find('list', array(
 				'fields' => array('UtmData.medium'),
-
 				'group' => array('UtmData.medium'),
-
 				'conditions' => array('UtmData.source' => $source),
 				'order' => array('UtmData.medium' => 'ASC')
 			));
@@ -59,10 +58,7 @@ class UtmData extends AppModel
 				// Get campaign for each medium
 				$campaigns = $this->find('list', array(
 					'fields' => array('UtmData.campaign'),
-
 					'group' => array('UtmData.campaign'),
-
-
 					'conditions' => array(
 						'UtmData.source' => $source,
 						'UtmData.medium' => $medium
@@ -76,10 +72,7 @@ class UtmData extends AppModel
 					// get content for each campaign
 					$contents = $this->find('list', array(
 						'fields' => array('UtmData.content'),
-
 						'group' => array('UtmData.content'),
-
-
 						'conditions' => array(
 							'UtmData.source' => $source,
 							'UtmData.medium' => $medium,
@@ -94,10 +87,7 @@ class UtmData extends AppModel
 						// get term for content
 						$terms = $this->find('list', array(
 							'fields' => array('UtmData.term'),
-
 							'group' => array('UtmData.term'),
-
-
 							'conditions' => array(
 								'UtmData.source' => $source,
 								'UtmData.medium' => $medium,
@@ -127,7 +117,6 @@ class UtmData extends AppModel
 		return $this->find('count', array(
 			'fields' => array('UtmData.source'),
 			'group' => array('UtmData.source')
-
 		));
 	}
 }
