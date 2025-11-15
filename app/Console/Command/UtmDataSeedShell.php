@@ -35,7 +35,7 @@ class UtmDataSeedShell extends AppShell {
 				'medium' => 'social',
 				'campaign' => 'autumn',
 				'content' => 'image',
-				'term' => null
+				'term' => 'park'
 			),
 			array(
 				'source' => 'twitter',
@@ -114,14 +114,14 @@ class UtmDataSeedShell extends AppShell {
 
 			array(
 				'source' => 'email',
-				'medium' => 'email',
+				'medium' => 'economics',
 				'campaign' => 'newsletter_october',
 				'content' => 'product_update',
 				'term' => null
 			),
 			array(
 				'source' => 'email',
-				'medium' => 'email',
+				'medium' => 'music',
 				'campaign' => 'newsletter_october',
 				'content' => 'user_stories',
 				'term' => null

@@ -7,7 +7,7 @@
 				<div class="tree-node source-node">
 					<div class="node-header">
 						<span class="toggle">▼</span>
-						<i class="icon">🌐</i>
+						<i class="icon">Source - </i>
 						<span class="node-title"><?php echo h($source); ?></span>
 					</div>
 					<div class="tree-children">
@@ -16,7 +16,7 @@
 								<div class="tree-node medium-node">
 									<div class="node-header">
 										<span class="toggle">▼</span>
-										<i class="icon">📡</i>
+										<i class="icon">Medium - </i>
 										<span class="node-title"><?php echo h($medium); ?></span>
 									</div>
 									<div class="tree-children">
@@ -25,7 +25,7 @@
 												<div class="tree-node campaign-node">
 													<div class="node-header">
 														<span class="toggle">▼</span>
-														<i class="icon">📢</i>
+														<i class="icon">Campaign - </i>
 														<span class="node-title"><?php echo h($campaign); ?></span>
 													</div>
 													<div class="tree-children">
@@ -34,7 +34,7 @@
 																<div class="tree-node content-node">
 																	<div class="node-header">
 																		<span class="toggle">▼</span>
-																		<i class="icon">📄</i>
+																		<i class="icon">Content - </i>
 																		<span class="node-title">
                                                                             <?php
 																			if ($content === null) {
@@ -50,7 +50,7 @@
 																			<?php foreach ($terms as $term): ?>
 																				<div class="tree-node term-node">
 																					<div class="node-header">
-																						<i class="icon">🔑</i>
+																						<i class="icon">Term - </i>
 																						<span class="node-title">
                                                                                             <?php
 																							if ($term === null) {
