@@ -71,14 +71,14 @@ class UtmDataSeedShell extends AppShell {
 				'source' => 'yandex',
 				'medium' => 'organic',
 				'campaign' => 'seo_boost',
-				'content' => null,
+				'content' => 'meta',
 				'term' => 'php_development'
 			),
 			array(
 				'source' => 'yandex',
 				'medium' => 'organic',
 				'campaign' => 'seo_boost',
-				'content' => null,
+				'content' => 'tags',
 				'term' => 'framework_comparison'
 			),
 
@@ -100,7 +100,7 @@ class UtmDataSeedShell extends AppShell {
 				'source' => 'instagram',
 				'medium' => 'social',
 				'campaign' => 'influencer_collab',
-				'content' => null,
+				'content' => 'fun',
 				'term' => null
 			),
 

@@ -1,10 +1,14 @@
 <?php
-class UtmDataSchema extends CakeSchema {
-	public function before($event = array()) {
+
+class UtmDataSchema extends CakeSchema
+{
+	public function before($event = array())
+	{
 		return true;
 	}
 
-	public function after($event = array()) {
+	public function after($event = array())
+	{
 	}
 
 	public $utm_data = array(
@@ -12,7 +16,7 @@ class UtmDataSchema extends CakeSchema {
 		'source' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 255, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'medium' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 255, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'campaign' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 255, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'content' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 255, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'content' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 255, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'term' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 255, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
