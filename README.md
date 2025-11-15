@@ -1,6 +1,7 @@
 # UTM data result
 
 ![img.png](app/webroot/img/demo_1.png)
+![img.png](app/webroot/img/demo_2.png)
 
 Add fixture to DB:
 `app/Console/cake utm_data_seed`
